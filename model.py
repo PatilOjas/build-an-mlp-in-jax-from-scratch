@@ -52,14 +52,6 @@ def init_linear_layer(key, in_dim, out_dim, scale=0.1):
 # Step 8 - init_mlp_params
 def init_mlp_params(key, layer_sizes, scale=0.1):
     # TODO: build a list of per-layer parameter dicts from adjacent layer sizes.
-    # parameter_list = list()
-    # sub_key = key
-    # for _ in range(len(layer_sizes)-1):
-    #     layer_key, sub_key = jax.random.split(sub_key, num=2)
-    #     parameter_list.append(init_linear_layer(layer_key, layer_sizes[_], layer_sizes[_+1], scale))
-    # return parameter_list
-
-    # Splitting all keys upfront before the loop
     num_layers = len(layer_sizes) - 1
     keys = jax.random.split(key, num_layers)
     paramters_list = []
